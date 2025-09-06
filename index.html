@@ -1,224 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fortune First - Secure Your Future</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-body { background: #f5f7fa; color: #333; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
-.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-
-/* HEADER */
-header { width:100%; background:#fff; padding:15px 20px; display:flex; align-items:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
-header img { height:60px; margin-right:15px; }
-header h1 { font-size:1.8rem; font-weight:700; color:#333; }
-
-/* HERO SECTION */
-.hero { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #4A90E2, #50E3C2); color: #fff; border-radius: 0 0 50px 50px; }
-.hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 15px; }
-.hero p { font-size: 1.4rem; font-weight: 600; margin-bottom: 30px; }
-.hero img { max-width: 100%; height: auto; border-radius: 15px; margin-top: 20px; }
-
-/* BUTTONS */
-.btn { background-color: #27ae60; color: #fff; padding: 15px 25px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: inline-block; }
-.btn:hover { background-color: #219150; transform: scale(1.05); }
-
-section { padding: 40px 20px; }
-section h2 { font-weight: 700; margin-bottom: 15px; text-align: center; }
-section p { font-weight: 600; text-align: center; margin-bottom:30px; }
-
-.survey-card, .benefit-card, .testimonial-card { background: #fff; border-radius: 15px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-.survey-question { margin-bottom: 20px; }
-.survey-question label { display: block; margin-bottom: 8px; font-weight: 600; }
-input[type="text"], select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; }
-.error { color: red; font-size: 0.9rem; margin-top: 5px; display: none; animation: shake 0.3s; }
-@keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
-
-.coverage-box { background: #27ae60; color: #fff; padding: 30px; text-align: center; border-radius: 15px; margin: 20px 0; font-size: 1.4rem; opacity:0; transform:translateY(20px); transition: all 0.6s ease; }
-.coverage-box.active { opacity:1; transform:translateY(0); }
-
-/* Benefits Section */
-.benefits { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; background: linear-gradient(135deg,#FFDD00,#FBB034); padding: 30px 20px; border-radius:15px; }
-.benefit-card { flex: 1 1 calc(25% - 20px); text-align: center; background: rgba(255,255,255,0.85); padding:20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-weight:600; }
-
-/* Testimonials Section */
-.testimonials { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; background: linear-gradient(135deg,#FF6A00,#FFB347); padding: 30px 20px; border-radius:15px; }
-.testimonial-card { flex: 1 1 calc(30% - 20px); font-size:0.95rem; color:#fff; background: rgba(0,0,0,0.2); padding:15px; border-radius:12px; font-weight:600; }
-
-/* Thank You */
-.thank-you { text-align:center; padding: 50px; background:#e0f7f1; border-radius:15px; margin-top:30px; display:none; opacity:0; transform:translateY(20px); transition: all 0.6s ease; font-weight:600; }
-.thank-you.active { display:block; opacity:1; transform:translateY(0); }
-
-/* Booking Modal */
-#bookingModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:9999; }
-#bookingModal .modal-content { background:#fff; padding:30px; border-radius:15px; max-width:600px; width:90%; position:relative; }
-#bookingModal .modal-content iframe { width:100%; height:500px; border:none; }
-#bookingModal .close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; font-size:1.2rem; }
-
-/* Responsive */
-@media(max-width:900px){ .benefit-card, .testimonial-card { flex:1 1 100%; } header h1 { font-size:1.4rem; } header img { height:50px; } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortune First - Secure Your Future</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #e0f7f1, #f9f9fb);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    header { display:flex; align-items:center; padding:15px 20px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+    header img { height:60px; margin-right:15px; }
+    header h1 { font-size:1.8rem; font-weight:700; color:#333; }
+    .hero { text-align:center; padding:60px 20px; background: linear-gradient(135deg, #4A90E2, #50E3C2); color:#fff; border-radius:0 0 50px 50px; }
+    .hero img { max-width:100%; border-radius:15px; margin-top:20px; }
+    h2 { font-size:1.6rem; font-weight:700; margin-bottom:10px; }
+    .survey-card, .coverage-box { background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-bottom:20px; }
+    .btn { background:#4A90E2; color:#fff; padding:12px 20px; border:none; border-radius:8px; font-size:1rem; cursor:pointer; }
+    .btn:hover { background:#357ABD; }
+    .coverage-box { display:none; text-align:center; }
+    #coverage-result { font-size:1.8rem; font-weight:bold; color:#4A90E2; }
+    #bookingModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:2000; }
+    .modal-content { background:#fff; margin:5% auto; padding:20px; border-radius:12px; width:90%; max-width:800px; }
+    .close { float:right; font-size:28px; cursor:pointer; }
+    #benefits { background:#f5f9ff; padding:50px 20px; text-align:center; }
+    .benefits { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; margin-top:20px; }
+    .benefit-card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); font-weight:500; }
+    #testimonials { background:#fffaf0; padding:50px 20px; text-align:center; }
+    .testimonials { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:20px; }
+    .testimonial-card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); font-style:italic; }
+  </style>
 </head>
 <body>
 
-<!-- HEADER WITH LOGO -->
 <header>
-    <img src="https://images.unsplash.com/photo-1611599538187-348eec88d1f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=60" alt="Company Logo">
-    <h1>Fortune First</h1>
+  <img src="images/logo.png" alt="Company Logo">
+  <h1>Fortune First</h1>
 </header>
 
-<!-- HERO SECTION -->
 <section class="hero">
-    <div class="container">
-        <h1>Secure Your Family’s Future in Just Minutes</h1>
-        <p>Your Partner in Securing Your Family’s Future</p>
-        <img src="https://images.unsplash.com/photo-1601758123927-2a3d3328e0ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Happy family image">
-    </div>
+  <div class="container">
+    <h1>Secure Your Family’s Future in Just Minutes</h1>
+    <p>Your Partner in Protecting What Matters Most</p>
+    <img src="images/happy-family.jpg" alt="Happy family image">
+  </div>
 </section>
 
-<!-- SURVEY SECTION -->
 <section id="survey">
-<div class="container">
+  <div class="container">
     <h2>Quick Survey</h2>
     <p>Answer a few questions to get your personalized coverage recommendation</p>
-    <div class="survey-card active">
-        <div class="survey-question">
-            <label>1. What is your age?</label>
-            <input type="text" id="q1" placeholder="Enter your age">
-            <div class="error" id="error1">Please enter a valid age.</div>
-        </div>
-        <div class="survey-question">
-            <label>2. Do you have any dependents?</label>
-            <select id="q2">
-                <option value="">Select</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-            <div class="error" id="error2">Please select an option.</div>
-        </div>
-        <div class="survey-question">
-            <label>3. What is your annual income?</label>
-            <input type="text" id="q3" placeholder="Enter in USD">
-            <div class="error" id="error3">Please enter a valid income.</div>
-        </div>
-        <div class="survey-question">
-            <label>4. Any current life insurance?</label>
-            <select id="q4">
-                <option value="">Select</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-            <div class="error" id="error4">Please select an option.</div>
-        </div>
-        <div class="survey-question">
-            <label>5. Coverage goal ($)</label>
-            <input type="text" id="q5" placeholder="Enter desired coverage (optional)">
-            <div class="error" id="error5">Please enter a positive number if provided.</div>
-        </div>
-        <div class="survey-question">
-            <label>6. Preferred consultation time?</label>
-            <input type="text" id="q6" placeholder="e.g., 3 PM tomorrow">
-            <div class="error" id="error6">Please provide a time.</div>
-        </div>
-        <button class="btn" onclick="submitSurvey()">Submit & Get Coverage</button>
+    <div class="survey-card">
+      <label>1. What is your age?<br><input type="number" id="age" required></label><br><br>
+      <label>2. What is your annual income ($)?<br><input type="number" id="income" required></label><br><br>
+      <label>3. Do you have dependents?<br>
+        <select id="dependents">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </label><br><br>
+      <label>4. What is your employment status?<br>
+        <select id="employment">
+          <option value="employed">Employed</option>
+          <option value="self">Self-Employed</option>
+          <option value="other">Other</option>
+        </select>
+      </label><br><br>
+      <label>5. What is your existing coverage (if any)?<br><input type="text" id="coverage"></label><br><br>
+      <label>6. What are your financial goals?<br><textarea id="goals"></textarea></label><br><br>
+      <button class="btn" onclick="calculateCoverage()">Submit</button>
     </div>
 
-    <!-- COVERAGE BOX WITH SINGLE BOOKING CTA -->
     <div class="coverage-box" id="coverage-box">
-        <h2>Your Estimated Coverage:</h2>
-        <span id="coverage-result">$0</span>
-        <div style="margin-top:20px;">
-            <button class="btn" onclick="openBooking()">Book Your Free Consultation</button>
-        </div>
+      <h2>Your Estimated Coverage:</h2>
+      <span id="coverage-result">$0</span>
+      <div style="margin-top:20px;">
+        <button class="btn" onclick="openBooking()">Book Your Free Consultation</button>
+      </div>
     </div>
-
-    <!-- THANK YOU SECTION -->
-    <div class="thank-you" id="thank-you">
-        <h2>Thank You! Your Consultation is Booked</h2>
-        <p>Prep Instructions:</p>
-        <ul style="text-align:left; max-width:600px; margin: 0 auto;">
-            <li>Have your income & current insurance details ready.</li>
-            <li>Prepare any questions about coverage or policy types.</li>
-            <li>Keep your calendar open for the consultation slot.</li>
-        </ul>
-        <p style="margin-top:20px;">You will receive email & SMS confirmation + 1-hour pre-call reminder.</p>
-    </div>
-</div>
+  </div>
 </section>
 
-<!-- BOOKING MODAL -->
+<!-- Booking Modal -->
 <div id="bookingModal">
-    <div class="modal-content">
-        <span class="close" onclick="closeBooking()">×</span>
-        <h3 style="text-align:center; margin-bottom:20px;">Select Your Consultation Slot</h3>
-        <!-- Google Calendar Embed showing only available slots -->
-        <iframe src="https://calendar.google.com/calendar/embed?src=youravailabilitycalendar%40gmail.com&ctz=America%2FNew_York&mode=AGENDA&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0" style="width:100%; height:500px; border:none;"></iframe>
+  <div class="modal-content">
+    <span class="close" onclick="closeBooking()">×</span>
+    <h3 style="text-align:center; margin-bottom:20px;">Select Your Consultation Slot</h3>
+    <!-- Calendly Embed with redirect -->
+    <div class="calendly-inline-widget" 
+         data-url="https://calendly.com/fortunefirst/30min-consultation?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=4A90E2&redirect_url=https://fortunefirst.net/thankyou.html" 
+         style="min-width:320px;height:700px;">
     </div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </div>
 </div>
 
-<!-- BENEFITS AND TESTIMONIALS with icons -->
 <section id="benefits">
-<div class="container">
-<h2>Why Choose Fortune First</h2>
-<div class="benefits">
-<div class="benefit-card"><img src="images/icon-rocket.png" style="width:32px; margin-right:10px; vertical-align:middle;">✅ Fast 60-second Survey</div>
-<div class="benefit-card"><img src="images/icon-calculator.png" style="width:32px; margin-right:10px; vertical-align:middle;">✅ Personalized Coverage Calculation</div>
-<div class="benefit-card"><img src="images/icon-calendar.png" style="width:32px; margin-right:10px; vertical-align:middle;">✅ Real-Time Booking & Reminders</div>
-<div class="benefit-card"><img src="images/icon-family.png" style="width:32px; margin-right:10px; vertical-align:middle;">✅ Trusted by Families & Professionals</div>
-</div>
-</div>
+  <div class="container">
+    <h2>Why Choose Fortune First</h2>
+    <div class="benefits">
+      <div class="benefit-card">🚀 Fast 60-second Survey</div>
+      <div class="benefit-card">📊 Personalized Coverage Calculation</div>
+      <div class="benefit-card">📅 Real-Time Booking & Reminders</div>
+      <div class="benefit-card">👨‍👩‍👧 Trusted by Families & Professionals</div>
+    </div>
+  </div>
 </section>
-
 
 <section id="testimonials">
-<div class="container">
-<h2>Loved by Families & Professionals Nationwide</h2>
-<div class="testimonials">
-<div class="testimonial-card"><img src="images/icon-quote.png" style="width:24px; margin-right:8px; vertical-align:top;">"Fortune First made it so simple to plan our family's future!" – Jane D.</div>
-<div class="testimonial-card"><img src="images/icon-quote.png" style="width:24px; margin-right:8px; vertical-align:top;">"Highly recommend for anyone looking for peace of mind." – Mark S.</div>
-<div class="testimonial-card"><img src="images/icon-quote.png" style="width:24px; margin-right:8px; vertical-align:top;">"Quick survey and clear coverage calculation. Excellent!" – Lisa K.</div>
-</div>
-</div>
+  <div class="container">
+    <h2>Loved by Families & Professionals Nationwide</h2>
+    <div class="testimonials">
+      <div class="testimonial-card">“Fortune First helped me understand my coverage needs quickly and easily!” – Sarah L.</div>
+      <div class="testimonial-card">“Booking a consultation was seamless. Highly recommend their services.” – James R.</div>
+    </div>
+  </div>
 </section>
 
 <script>
-function validateSurvey(){
-    let valid = true;
-    const q1 = parseInt(document.getElementById('q1').value);
-    if(isNaN(q1) || q1<=0){ valid=false; document.getElementById('error1').style.display='block'; } else { document.getElementById('error1').style.display='none'; }
-    const q2 = document.getElementById('q2').value;
-    if(q2===''){ valid=false; document.getElementById('error2').style.display='block'; } else { document.getElementById('error2').style.display='none'; }
-    const q3 = parseInt(document.getElementById('q3').value);
-    if(isNaN(q3) || q3<=0){ valid=false; document.getElementById('error3').style.display='block'; } else { document.getElementById('error3').style.display='none'; }
-    const q4 = document.getElementById('q4').value;
-    if(q4===''){ valid=false; document.getElementById('error4').style.display='block'; } else { document.getElementById('error4').style.display='none'; }
-    const q5 = document.getElementById('q5').value;
-    if(q5 && (isNaN(parseInt(q5)) || parseInt(q5)<=0)){ valid=false; document.getElementById('error5').style.display='block'; } else { document.getElementById('error5').style.display='none'; }
-    const q6 = document.getElementById('q6').value;
-    if(q6.trim()===''){ valid=false; document.getElementById('error6').style.display='block'; } else { document.getElementById('error6').style.display='none'; }
-    return valid;
+function calculateCoverage() {
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const dependents = document.getElementById('dependents').value;
+  let coverage = income * 10;
+  if (dependents === 'yes') coverage *= 1.2;
+  document.getElementById('coverage-result').innerText = "$" + coverage.toLocaleString();
+  document.getElementById('coverage-box').style.display = "block";
 }
-
-function submitSurvey(){
-    if(!validateSurvey()) return;
-    const income = parseInt(document.getElementById('q3').value) || 50000;
-    const coverage = income * 10;
-    document.getElementById('coverage-result').innerText = '$'+coverage.toLocaleString();
-    document.getElementById('coverage-box').classList.add('active');
-    window.scrollTo({top:document.getElementById('coverage-box').offsetTop-20, behavior:'smooth'});
+function openBooking() {
+  document.getElementById('bookingModal').style.display = "block";
 }
-
-function openBooking(){
-    document.getElementById('bookingModal').style.display = 'flex';
-}
-
-function closeBooking(){
-    document.getElementById('bookingModal').style.display = 'none';
+function closeBooking() {
+  document.getElementById('bookingModal').style.display = "none";
 }
 </script>
+
 </body>
 </html>
-
