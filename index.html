@@ -229,12 +229,15 @@
     }
 
     // Open Calendly popup on button click
-    document.getElementById('bookBtn').addEventListener('click', function() {
+    function openBooking() {
       Calendly.initPopupWidget({
         url: 'https://calendly.com/fortunefirst/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=4A90E2&redirect_url=https://fortunefirst.net/thankyou.html'
       });
-    });
+      return false;
+    }
+
   </script>
 </body>
 </html>
+
 
