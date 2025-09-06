@@ -1,188 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fortune First - Secure Your Future</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fortune First — Secure Your Future</title>
+
+  <!-- Optional font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #eef6ff, #ffffff);
-      color: #333;
+    :root{
+      --primary:#4A90E2;
+      --accent:#27ae60;
+      --muted:#64748b;
+      --bg-grad: linear-gradient(180deg,#e9faf5 0%, #f9fbff 100%);
+      --card:#ffffff;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: #ffffffdd;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    body{background:var(--bg-grad);color:#0f172a;line-height:1.45}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    /* header */
+    .site-header{display:flex;align-items:center;gap:16px;padding:12px;background:rgba(255,255,255,0.95);border-radius:8px;box-shadow:0 6px 18px rgba(12,20,40,0.06);position:sticky;top:12px;z-index:40}
+    .logo{height:56px;width:56px;border-radius:8px;object-fit:cover}
+    .brand{font-size:1.15rem;font-weight:700;color:var(--primary);margin:0}
+    /* hero */
+    .hero{margin-top:18px;border-radius:14px;padding:44px 24px;color:white;background:linear-gradient(135deg,#3b82f6 0%, #10b981 100%);display:flex;flex-direction:column;align-items:center;text-align:center}
+    .hero h1{font-size:2.1rem;margin:0 0 8px;font-weight:800}
+    .hero p{margin:0 0 18px;font-weight:600;opacity:0.95}
+    .cta-btn{background:var(--accent);color:#fff;border:0;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer}
+    .cta-btn:hover{filter:brightness(.95)}
+    /* survey */
+    section.container { max-width:900px; margin:36px auto; padding:0 20px; }
+    .card{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 8px 30px rgba(8,15,30,0.06);margin-bottom:18px}
+    h2.section-title{font-size:1.4rem;margin:0 0 8px;font-weight:800;color:#0f172a;text-align:center}
+    p.lead{margin:0 0 16px;text-align:center;color:var(--muted);font-weight:600}
+    form label{display:block;margin-top:12px;font-weight:700;color:#0b1220}
+    input[type="number"], input[type="text"], textarea, select {
+      width:100%; padding:10px 12px; margin-top:6px;border-radius:8px;border:1px solid #dbe3ea;font-size:1rem;
     }
-    header img { height: 50px; }
-    header h1 { font-size: 1.5rem; color: #4A90E2; margin: 0; }
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      background: url('images/happy-family.jpg') no-repeat center center/cover;
-      color: white;
-    }
-    .hero h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    .btn-primary {
-      background: #4A90E2;
-      color: white;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .btn-primary:hover { background: #357ABD; }
-    section.container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-weight: 700;
-      color: #222;
-    }
-    form label { font-weight: 600; display: block; margin-top: 15px; }
-    form input, form select {
-      width: 100%; padding: 10px; margin-top: 5px;
-      border: 1px solid #ccc; border-radius: 6px;
-    }
-    #result {
-      margin-top: 20px; font-weight: bold; color: #4A90E2; font-size: 1.2rem;
-      text-align: center;
-    }
-    .testimonials {
-      background: #f9fcff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .testimonial {
-      max-width: 700px;
-      margin: 20px auto;
-      font-style: italic;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #4A90E2;
-      color: white;
+    textarea{min-height:80px;resize:vertical}
+    .row{display:flex;gap:12px}
+    .row .col{flex:1}
+    .error{color:#b91c1c;font-size:0.95rem;margin-top:6px;display:none}
+    /* result */
+    .resultCard{display:none;text-align:center;padding:18px;border-radius:10px;background:linear-gradient(90deg,#ffffff,#f8fff9);border:1px solid #e6f7ef}
+    .resultCard .amount{font-size:1.6rem;color:var(--primary);font-weight:800;margin-top:6px}
+    .book-btn{margin-top:12px;padding:10px 16px;background:var(--primary);color:#fff;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+    .book-btn[disabled]{opacity:.5;cursor:not-allowed}
+    /* grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .benefit{background:linear-gradient(180deg,#fff 0,#fff 100%);padding:18px;border-radius:10px;text-align:center;font-weight:700;box-shadow:0 8px 22px rgba(8,15,30,0.04)}
+    .testimonial{background:linear-gradient(180deg,#fffaf0 0,#fff 100%);padding:18px;border-radius:10px;font-style:italic;color:#0b1220;box-shadow:0 8px 22px rgba(8,15,30,0.04)}
+    footer{padding:28px 10px;text-align:center;color:#fff;background:linear-gradient(90deg,var(--primary),#2b9cf7);border-radius:10px;margin:36px 0 24px}
+    @media (max-width:720px){
+      .hero h1{font-size:1.5rem}
+      .site-header{padding:8px}
+      .logo{height:44px;width:44px}
     }
   </style>
-
-  <!-- Calendly script -->
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Calendly script will be loaded dynamically if not present -->
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <img src="images/logo.png" alt="Fortune First Logo">
-      <h1>Fortune First</h1>
-    </div>
-  </header>
+  <div class="wrap">
+    <!-- Header -->
+    <header class="site-header" role="banner">
+      <img class="logo" src="images/logo.png" alt="Fortune First logo">
+      <div>
+        <div class="brand">Fortune First</div>
+        <div style="font-size:12px;color:#64748b">Trusted guidance for life's biggest decisions</div>
+      </div>
+    </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Secure Your Family’s Future Today</h2>
-    <p>Answer a quick survey and book a free consultation with our experts.</p>
-    <button class="btn-primary" onclick="document.getElementById('survey').scrollIntoView({behavior: 'smooth'})">
-      Get Started
-    </button>
-  </section>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">Secure Your Family’s Future Today</h1>
+      <p>Quick survey, instant estimate, and a free 30-minute consultation — tailored to you.</p>
+      <button class="cta-btn" onclick="document.getElementById('surveySection').scrollIntoView({behavior:'smooth'})">Get Started</button>
+    </section>
 
-  <!-- Quick Survey -->
-  <section class="container" id="survey">
-    <h2>Quick Survey</h2>
-    <form id="surveyForm" onsubmit="event.preventDefault(); calculateCoverage();">
-      <label>What is your age?</label>
-      <input type="number" id="age" required>
+    <!-- Survey -->
+    <section class="container" id="surveySection" aria-labelledby="survey-title">
+      <h2 id="survey-title" class="section-title">Quick Survey</h2>
+      <p class="lead">6 short fields — takes under 60 seconds</p>
 
-      <label>What is your annual income? (USD)</label>
-      <input type="number" id="income" required>
+      <div class="card" role="form" aria-labelledby="survey-title">
+        <form id="surveyForm" novalidate>
+          <label for="name">Full name (optional)</label>
+          <input id="name" type="text" placeholder="Jane Doe">
 
-      <label>Do you currently have life insurance?</label>
-      <select id="insurance" required>
-        <option value="">Select</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
+          <label for="email">Email (optional — useful for confirmation)</label>
+          <input id="email" type="text" placeholder="name@example.com">
 
-      <label>How many dependents do you have?</label>
-      <input type="number" id="dependents" required>
+          <label for="age">1) What is your age?</label>
+          <input id="age" type="number" min="18" placeholder="e.g., 35">
+          <div class="error" id="err-age">Please enter an age (18+).</div>
 
-      <button type="submit" class="btn-primary">See My Coverage Need</button>
-    </form>
-    <div id="result"></div>
-    <div style="text-align:center; margin-top:20px;">
-      <button class="btn-primary" onclick="openBooking()">📅 Book 30-Min Consultation</button>
-    </div>
-  </section>
+          <label for="income">2) Annual income (USD)</label>
+          <input id="income" type="number" min="0" placeholder="e.g., 85000">
+          <div class="error" id="err-income">Please enter a valid income.</div>
 
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial">
-      “Fortune First made insurance simple and stress-free. I feel secure about my family’s future.”
-      <br>— Sarah T.
-    </div>
-    <div class="testimonial">
-      “The consultation was clear and personalized. Highly recommended!”
-      <br>— James K.
-    </div>
-  </section>
+          <div class="row">
+            <div class="col">
+              <label for="dependents">3) Dependents</label>
+              <input id="dependents" type="number" min="0" placeholder="Number">
+            </div>
+            <div class="col">
+              <label for="insurance">4) Current life insurance?</label>
+              <select id="insurance">
+                <option value="">Select</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+              <div class="error" id="err-insurance">Please choose yes or no.</div>
+            </div>
+          </div>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Fortune First. All rights reserved.
-  </footer>
+          <label for="coverageGoal">5) Coverage goal (optional)</label>
+          <input id="coverageGoal" type="number" min="0" placeholder="e.g., 250000">
 
-  <!-- Scripts -->
+          <label for="preferred">6) Preferred consultation time (optional)</label>
+          <input id="preferred" type="text" placeholder="e.g., Weekday afternoons">
+
+          <div style="margin-top:16px;text-align:center">
+            <button class="cta-btn" type="button" id="estimateBtn">Get Estimate</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Result card (hidden until estimate) -->
+      <div class="card resultCard" id="resultCard" aria-live="polite">
+        <div id="estimateText" style="font-weight:800">Your estimated coverage need</div>
+        <div class="amount" id="coverageAmount" style="font-size:1.6rem;color:var(--primary);margin-top:8px">$0</div>
+        <div style="margin-top:10px;color:#475569;font-weight:600">This is an estimate — your advisor will confirm at the call.</div>
+
+        <div style="text-align:center;margin-top:14px">
+          <button class="book-btn" id="bookBtn" disabled>Book 30-min Consultation</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="container" aria-labelledby="benefits-title">
+      <h2 id="benefits-title" class="section-title">Why Fortune First</h2>
+      <div class="grid" role="list">
+        <div class="benefit" role="listitem">✅ Fast 60-second survey</div>
+        <div class="benefit" role="listitem">🧮 Coverage = income × 10 (estimate)</div>
+        <div class="benefit" role="listitem">📅 30-minute consultations</div>
+        <div class="benefit" role="listitem">🔒 Secure & private</div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container" aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title" class="section-title">What Clients Say</h2>
+      <div class="grid" role="list">
+        <div class="testimonial" role="listitem">“Simple, clear and helpful — the recommended coverage matched our needs.” — Jane D.</div>
+        <div class="testimonial" role="listitem">“Booked in seconds and got a friendly, expert call.” — Mark S.</div>
+      </div>
+    </section>
+
+    <footer>© <span id="year"></span> Fortune First — All rights reserved</footer>
+  </div>
+
   <script>
-    // Show estimated coverage
-    function calculateCoverage() {
-      const income = parseFloat(document.getElementById('income').value);
-      const dependents = parseInt(document.getElementById('dependents').value) || 0;
+  // ===== CONFIG — REPLACE THESE BEFORE DEPLOY =====
+  const CALENDLY_USERNAME = 'YOUR_CALENDLY_USERNAME'; // e.g. 'anilm'
+  const EVENT_PATH = '30min-consultation';           // your Calendly event slug
+  const REDIRECT_URL = 'https://yourdomain.com/thankyou.html'; // MUST be absolute URL (replace)
+  // =================================================
 
-      if (!isNaN(income) && income > 0) {
-        let baseCoverage = income * 10;
-        let extra = dependents * 50000; // add 50k per dependent
-        let total = baseCoverage + extra;
+  document.getElementById('year').innerText = new Date().getFullYear();
 
-        document.getElementById('result').innerText =
-          "💡 Estimated Coverage Needed: $" + total.toLocaleString();
-      } else {
-        document.getElementById('result').innerText = "⚠️ Please enter valid income.";
+  // helper to show/hide error nodes
+  function showError(id, show) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = show ? 'block' : 'none';
+  }
+
+  // validation function
+  function validateInputs() {
+    let ok = true;
+    const age = parseInt(document.getElementById('age').value, 10);
+    const income = parseFloat(document.getElementById('income').value);
+    const insurance = document.getElementById('insurance').value;
+
+    if (isNaN(age) || age < 18) { showError('err-age', true); ok = false; } else showError('err-age', false);
+    if (isNaN(income) || income <= 0) { showError('err-income', true); ok = false; } else showError('err-income', false);
+    if (!insurance) { showError('err-insurance', true); ok = false; } else showError('err-insurance', false);
+
+    return ok;
+  }
+
+  // coverage = income * 10 (per requirement)
+  function calculateCoverage() {
+    if (!validateInputs()) return false;
+    const income = parseFloat(document.getElementById('income').value);
+    const coverageGoal = parseFloat(document.getElementById('coverageGoal').value) || null;
+    // compute
+    const estimated = Math.round(income * 10);
+    const display = coverageGoal && coverageGoal > 0
+      ? `$${estimated.toLocaleString()} (estimate) • Your goal: $${coverageGoal.toLocaleString()}`
+      : `$${estimated.toLocaleString()}`;
+    document.getElementById('coverageAmount').innerText = display;
+    document.getElementById('resultCard').style.display = 'block';
+    // enable book button
+    document.getElementById('bookBtn').disabled = false;
+    // scroll result into view
+    document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'center'});
+    return true;
+  }
+
+  // attach estimate button
+  document.getElementById('estimateBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    calculateCoverage();
+  });
+
+  // Calendly loader with fallback
+  function loadCalendlyScript(timeout = 6000) {
+    return new Promise((resolve, reject) => {
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+        return resolve();
       }
-    }
+      // if script already injected, wait for it
+      if (document.getElementById('calendly-widget-script')) {
+        let tries = 0;
+        const t = setInterval(() => {
+          tries++;
+          if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+            clearInterval(t); resolve();
+          } else if (tries * 200 > timeout) {
+            clearInterval(t); reject(new Error('Calendly script load timeout'));
+          }
+        }, 200);
+        return;
+      }
+      // inject script
+      const s = document.createElement('script');
+      s.id = 'calendly-widget-script';
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      s.onload = () => {
+        if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') resolve();
+        else reject(new Error('Calendly loaded but API not available'));
+      };
+      s.onerror = () => reject(new Error('Calendly script failed to load'));
+      document.head.appendChild(s);
+      // fallback timeout
+      setTimeout(() => {
+        if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+          resolve();
+        } else {
+          reject(new Error('Calendly script load timeout'));
+        }
+      }, timeout + 200);
+    });
+  }
 
-    // Open Calendly popup
-    function openBooking() {
-      Calendly.initPopupWidget({
-        url: 'https://calendly.com/fortunefirst/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=4A90E2&redirect_url=https://fortunefirst.net/thankyou.html'
-      });
-      return false;
+  // build Calendly URL (with redirect)
+  function buildCalendlyUrl() {
+    if (!CALENDLY_USERNAME || CALENDLY_USERNAME === 'fortunefirst') {
+      // warn developer/tester
+      console.warn('Please set CALENDLY_USERNAME in the script to your actual Calendly username.');
     }
+    const base = `https://calendly.com/${encodeURIComponent(CALENDLY_USERNAME)}/${encodeURIComponent(EVENT_PATH)}`;
+    const params = new URLSearchParams({
+      hide_event_type_details: '1',
+      hide_gdpr_banner: '1',
+      primary_color: '#4A90E2',
+      redirect_url: REDIRECT_URL
+    });
+    return `${base}?${params.toString()}`;
+  }
+
+  // open Calendly popup (ensures script loaded + fallback to new tab)
+  function openCalendly() {
+    // require estimate shown (prevent accidental launch)
+    const bookBtn = document.getElementById('bookBtn');
+    if (bookBtn.disabled) {
+      alert('Please get your coverage estimate first.');
+      return;
+    }
+    const url = buildCalendlyUrl();
+
+    loadCalendlyScript().then(() => {
+      try {
+        Calendly.initPopupWidget({ url: url });
+      } catch (err) {
+        console.warn('Calendly popup failed, opening in new tab', err);
+        window.open(url, '_blank', 'noopener');
+      }
+    }).catch((err) => {
+      console.warn('Calendly script load failed, opening in new tab', err);
+      window.open(url, '_blank', 'noopener');
+    });
+    return false;
+  }
+
+  // connect book button
+  document.getElementById('bookBtn').addEventListener('click', function(e){
+    e.preventDefault(); openCalendly();
+  });
   </script>
 </body>
 </html>
