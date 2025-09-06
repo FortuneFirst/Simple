@@ -220,9 +220,9 @@
 
     // Calendly popup opening with robust loading + fallback
     function openCalendly() {
-      const username = 'YOUR_CALENDLY_USERNAME'; // << REPLACE >>
-      const redirect = 'https://YOUR_DOMAIN/thankyou.html'; // << REPLACE with full absolute URL (required by Calendly)
-      const url = `https://calendly.com/${encodeURIComponent(username)}/30min-consultation?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=${encodeURIComponent('#4A90E2')}&redirect_url=${encodeURIComponent(redirect)}`;
+      const username = 'fortunefirst'; // << REPLACE >>
+      const redirect = 'https://fortunefirst.net/thankyou.html'; // << REPLACE with full absolute URL (required by Calendly)
+      const url = `https://calendly.com/${encodeURIComponent(username)}/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=${encodeURIComponent('#4A90E2')}&redirect_url=${encodeURIComponent(redirect)}`;
 
       // If Calendly is already available (script loaded), use popup
       if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
@@ -269,3 +269,4 @@
   </script>
 </body>
 </html>
+
