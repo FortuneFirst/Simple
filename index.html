@@ -228,59 +228,17 @@
       }
     }
 
- // Calendly popup opening with robust loading + fallback
-    function openCalendly() {
-      const username = 'fortunefirst'; // << REPLACE >>
-      const redirect = 'https://fortunefirst.net/thankyou.html'; // << REPLACE with full absolute URL (required by Calendly)
-      const url = `https://calendly.com/${encodeURIComponent(username)}/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=${encodeURIComponent('#4A90E2')}&redirect_url=${encodeURIComponent(redirect)}`;
-
-      // If Calendly is already available (script loaded), use popup
-      if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
-        Calendly.initPopupWidget({ url: url });
-        return false;
-      }
-
-      // Otherwise, try to dynamically load the script and then open
-      const SCRIPT_ID = 'calendly-widget-script';
-      if (!document.getElementById(SCRIPT_ID)) {
-        const s = document.createElement('script');
-        s.id = SCRIPT_ID;
-        s.src = 'https://assets.calendly.com/assets/external/widget.js';
-        s.async = true;
-        s.onload = function() {
-          if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
-            Calendly.initPopupWidget({ url: url });
-          } else {
-            // Fallback to opening Calendly page in a new tab
-            window.open(url, '_blank', 'noopener');
-          }
-        };
-        s.onerror = function() {
-          // final fallback: open in new tab
-          window.open(url, '_blank', 'noopener');
-        };
-        document.body.appendChild(s);
-      } else {
-        // script present but not ready; poll briefly
-        let tries = 0;
-        const timer = setInterval(function() {
-          tries++;
-          if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
-            clearInterval(timer);
-            Calendly.initPopupWidget({ url: url });
-          } else if (tries > 20) {
-            clearInterval(timer);
-            window.open(url, '_blank', 'noopener');
-          }
-        }, 200);
-      }
-      return false;
+    // Open Calendly in new tab
+    function openBooking() {
+      window.open(
+        'https://calendly.com/YOURUSERNAME/30min-consultation?hide_event_type_details=1&hide_gdpr_banner=1',
+        '_blank'
+      );
     }
-
-
   </script>
 </body>
 </html>
+
 
 
 
